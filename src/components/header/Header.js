@@ -2,14 +2,16 @@ import React from 'react';
 import styles from './Header.module.css';
 
 const Header = () => {
-    return <header className={styles.header}>
-        <h1>
-            Movie Database
-        </h1>
-        <div>
-            <form>
-                <input type="text" placeholder="Search Movie" /> 
-            </form>
+    return <header>
+        <div className={styles.container}>
+            <h1>
+                Movie Database
+            </h1>
+            <div>
+                <form>
+                    <input type="text" placeholder="Search Movie" /> 
+                </form>
+            </div>
         </div>
     </header>
 }
