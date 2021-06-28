@@ -23,7 +23,7 @@ const App = () => {
   if(!error){
     movieDisplay = movieState.map((movie) => (
       <div className="movie-card" key={movie.poster_path}>
-        <img src={'https://image.tmdb.org/t/p/w200/' + movie.backdrop_path} alt={movie.original_title} />
+        <img src={'https://image.tmdb.org/t/p/w200/' + movie.poster_path} alt={movie.original_title} />
         <h2>{movie.title}</h2>
       </div>
     )
