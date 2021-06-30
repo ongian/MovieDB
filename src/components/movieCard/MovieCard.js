@@ -10,6 +10,7 @@ const MovieCard = (props) => {
                     <span className={style.rating}>{props.rating}</span>
                 </div>
             </div>
+            <p>{props.release_date}</p>
             <h3>{props.title}</h3>
         </div>
     )

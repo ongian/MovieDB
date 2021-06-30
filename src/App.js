@@ -21,7 +21,9 @@ const App = () => {
   }, []);
 
   if(!error){
-    movieDisplay = movieState.map((movie) => (
+    let today = Date.now();
+    movieDisplay = movieState.filter(relDate => new Date(relDate.release_date).getTime() > today)
+    .map((movie) => (
       <MovieCard 
         key={movie.id} 
         img={movie.poster_path} 
@@ -29,8 +31,10 @@ const App = () => {
         title={movie.title}
         rating={movie.vote_average}
         genre={movie.genre_ids}
+        release_date={new Date(movie.release_date).getTime()}
       />
     ))
+    console.log(today)
   } else {
     movieDisplay = <p>Failed to load. . .</p>
   }
