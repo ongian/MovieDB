@@ -3,6 +3,7 @@ import './index.css';
 import Header from './components/header/Header';
 import MovieCard from './components/movieCard/MovieCard';
 import BlockContainer from './components/utilities/blockContainer/BlockContainer';
+import Banner from './components/banner/Banner';
 
 let movieDisplay = <p>Loading</p>;
 
@@ -42,6 +43,7 @@ const App = () => {
   return (
     <React.Fragment>
       <Header />
+      <Banner />
       <BlockContainer>
         {movieDisplay}
       </BlockContainer>

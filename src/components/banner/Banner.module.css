@@ -1,0 +1,26 @@
+.banner {
+    width: 100%;
+    background: url(../../images/MovieDBBanner.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height: 450px;
+    display: flex;
+    align-items: center;
+}
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: left;
+    width: 100%;
+}
+.container h2 {
+    color: #fff;
+    font-size: 2rem;
+    line-height: 2rem;
+    width: 100%;
+    font-weight: bold;
+}
+.container p {
+    font-size: 1rem;
+    color: #fff;
+}
