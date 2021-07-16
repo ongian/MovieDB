@@ -1,9 +1,10 @@
 import React from 'react';
+import style from './Category.module.css';
 
 const Category = () => {
     return (
-        <div className="category">
-            <div className="category_button">
+        <div className={style.category}>
+            <div className={style.category_button}>
                 <button>Upcoming Movie</button>
                 <button>What's New?</button>
                 <button>Trending</button>
