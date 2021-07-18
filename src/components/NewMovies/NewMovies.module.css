@@ -1,0 +1,5 @@
+.new-movies {
+    display: flex;
+    flex-flow: wrap;
+    margin: 2rem 0;
+}

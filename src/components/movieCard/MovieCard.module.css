@@ -3,9 +3,10 @@
 }
 .movie-card h3 {
     font-size: 16px;
-    max-width: 200px;
-    line-height: .5em;
+    line-height: 1.2em;
     margin: 10px 0 2px;
+    border-bottom: 1px solid #d8d8d8;
+    padding: 0 0 5px;
 }
 .movie-cover {
     position: relative;
@@ -15,7 +16,7 @@
     overflow: hidden;
     margin: auto;
 }
-.ratings-and-genre {
+.ratings-and-summary {
     background: rgb(0 0 0 / 70%);
     position: absolute;
     top: 100%;
@@ -27,14 +28,17 @@
     justify-content: center;
     flex-flow: column;
     transition: all .5s ease;
+    padding: 15px;
+    box-sizing: border-box;
 }
-.ratings-and-genre p {
+.ratings-and-summary p {
     color: #fff;
     font-size: 14px;
-    line-height: 1em;
+    line-height: 1.25em;
     margin: 0;
+    font-weight: 100;
 }
-.ratings-and-genre span {
+.ratings-and-summary span {
     font-size: 18px;
     color: #fff;
     font-weight: bold;
@@ -49,8 +53,13 @@
     margin: 0;
 }
 
-.movie-card:hover .ratings-and-genre {
+.movie-card:hover .ratings-and-summary {
     top: 0
+}
+.genre {
+    padding: 0;
+    margin: 0;
+    display: flex;
 }
 .genre span {
     font-size: .6rem;

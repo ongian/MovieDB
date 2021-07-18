@@ -10,15 +10,15 @@ const MovieCard = (props) => {
         })
     })
     const genreDisplay = <div className={style.genre}>
-            {eachGenre.map((gen, ind) => <span className={style.genre} key={gen + ind}>{gen.name} </span>)}
+            {eachGenre.map((gen, index) => <span className={style.genre} key={gen + index}>{gen.name}{index < eachGenre.length - 1 ? ',  ' : ''} </span>)}
         </div>;
     return (
         <div className={style['movie-card']}>
             <div className={style['movie-cover']}>
                 <img src={`https://image.tmdb.org/t/p/w300/${props.img}`} alt={props.orig_title} />
-                <div className={style['ratings-and-genre']}>
+                <div className={style['ratings-and-summary']}>
                     <p className={style.summary}>{props.summary}</p>
-                    <span className={style.rating}>{props.rating ? props.rating : <p className={style.ratings}>No ratings yet</p>}</span>
+                    <span className={style.rating}>{props.rating ? props.rating : 'No ratings yet'}</span>
                 </div>
             </div>
             <div className={style['title-container']}>

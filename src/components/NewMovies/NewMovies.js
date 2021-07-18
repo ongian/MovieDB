@@ -1,16 +1,16 @@
 import React, {useEffect, useState} from 'react';
 import MovieCard from '../movieCard/MovieCard.js';
 import Loader from '../utilities/loader/Loader.js';
-import style from './UpcomingMovie.module.css';
+import style from './NewMovies.module.css';
 import axios from 'axios';
-const UpcomingMovie = (props) => {
+const NewMovies = (props) => {
     const [movieList, setMovieList] = useState([]);
     const [loading, setLoading] = useState(true)
 
     useEffect(() => {
         const movies = async() => {
             setLoading(true)
-            const results = await axios('https://api.themoviedb.org/3/discover/movie?api_key=f785d2cd4e430f2258527567b3468db6&language=en-US&sort_by=primary_release_date.desc&include_adult=false&include_video=false&page=1&with_watch_monetization_types=flatrate');
+            const results = await axios('https://api.themoviedb.org/3/movie/now_playing?api_key=f785d2cd4e430f2258527567b3468db6&language=en-US&page=1');
             setMovieList(results.data.results)
             setLoading(false)
         }
@@ -39,10 +39,10 @@ const UpcomingMovie = (props) => {
     //const genreName = props.genre.map(propsGen => genre.findIndex(gen => gen.id === propsGen));
     
     return(
-        <div className={style.upcoming}>
+        <div className={style['new-movies']}>
             {loading ? <Loader />: movieDisplay}
         </div>
     )
 }
 
-export default UpcomingMovie;
+export default NewMovies;
