@@ -1,0 +1,5 @@
+.upcoming {
+    display: flex;
+    flex-flow: wrap;
+    margin: 2rem 0;
+}

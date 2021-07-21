@@ -1,0 +1,7 @@
+.container {
+    max-width: 1200px;
+    display: flex;
+    margin: 5px auto;
+    padding: 10px;
+    flex-wrap: wrap;
+}

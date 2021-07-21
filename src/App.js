@@ -1,23 +1,26 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
 import './index.css';
 import Header from './components/header/Header';
-
+import BlockContainer from './components/utilities/blockContainer/BlockContainer';
+import Banner from './components/banner/Banner';
+import Category from './components/category/Category';
+import UpcomingMovie from './components/UpcomingMovie/UpcomingMovie.js';
 
 const App = () => {
-  const [movieState, setMovieState] = useState({});
-  useEffect(() => {
-    fetchMovie();
-  }, [])
-  const fetchMovie = async() => {
-    const movieResponse = await fetch('https://api.themoviedb.org/3/movie/2/lists?api_key=f785d2cd4e430f2258527567b3468db6&language=en-US&page=1');
-    const moviesJson = await movieResponse.json();
-    setMovieState(moviesJson);
+  const [category, setCategory] = useState('upcoming');
+
+  const getCategory = (category) => {
+    setCategory(category)
   }
-  console.log(movieState)
+  console.log(category)
   return (
     <React.Fragment>
       <Header />
-      <div>Hello World!</div>
+      <Banner />
+      <BlockContainer>
+        <Category getCategory={getCategory} />
+        <UpcomingMovie />
+      </BlockContainer>
     </React.Fragment>
   )
   
