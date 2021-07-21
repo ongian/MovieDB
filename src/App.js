@@ -5,10 +5,12 @@ import BlockContainer from './components/utilities/blockContainer/BlockContainer
 import Banner from './components/banner/Banner';
 import Category from './components/category/Category';
 import UpcomingMovie from './components/UpcomingMovie/UpcomingMovie.js';
+import NewMovies from './components/NewMovies/NewMovies';
+import Trending from './components/Trending/Trending';
 
 const App = () => {
   const [category, setCategory] = useState('upcoming');
-
+  
   const getCategory = (category) => {
     setCategory(category)
   }
@@ -19,7 +21,9 @@ const App = () => {
       <Banner />
       <BlockContainer>
         <Category getCategory={getCategory} />
-        <UpcomingMovie />
+        {category === 'upcoming' && <UpcomingMovie />}
+        {category === 'new' && <NewMovies />}
+        {category === 'trending' && <Trending />}
       </BlockContainer>
     </React.Fragment>
   )

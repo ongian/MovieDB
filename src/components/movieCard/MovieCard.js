@@ -1,6 +1,8 @@
 import React, {useContext} from 'react';
 import style from './MovieCard.module.css';
 import { MovieContext } from '../../Context/MovieContext';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
 const MovieCard = (props) => {
     const ctxGenre = useContext(MovieContext);
 
@@ -18,7 +20,7 @@ const MovieCard = (props) => {
                 <img src={`https://image.tmdb.org/t/p/w300/${props.img}`} alt={props.orig_title} />
                 <div className={style['ratings-and-summary']}>
                     <p className={style.summary}>{props.summary}</p>
-                    <span className={style.rating}>{props.rating ? props.rating : 'No ratings yet'}</span>
+                    <span className={style.rating}>{props.rating ? `<FontAwesomeIcon icon="fa-solid fa-star" />  props.rating` : 'No ratings yet'}</span>
                 </div>
             </div>
             <div className={style['title-container']}>
