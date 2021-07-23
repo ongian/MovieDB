@@ -2,6 +2,7 @@ import React, {useContext} from 'react';
 import style from './MovieCard.module.css';
 import { MovieContext } from '../../Context/MovieContext';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faStar } from '@fortawesome/free-solid-svg-icons';
 
 const MovieCard = (props) => {
     const ctxGenre = useContext(MovieContext);
@@ -11,6 +12,7 @@ const MovieCard = (props) => {
             return ctxGen.id === propsGen
         })
     })
+    const star = <FontAwesomeIcon icon={faStar} />;
     const genreDisplay = <div className={style.genre}>
             {eachGenre.map((gen, index) => <span className={style.genre} key={gen + index}>{gen.name}{index < eachGenre.length - 1 ? ',  ' : ''} </span>)}
         </div>;
@@ -20,7 +22,7 @@ const MovieCard = (props) => {
                 <img src={`https://image.tmdb.org/t/p/w300/${props.img}`} alt={props.orig_title} />
                 <div className={style['ratings-and-summary']}>
                     <p className={style.summary}>{props.summary}</p>
-                    <span className={style.rating}>{props.rating ? `<FontAwesomeIcon icon="fa-solid fa-star" />  props.rating` : 'No ratings yet'}</span>
+                    {props.rating ? <span className={style.rating}>{star} {props.rating}</span>: 'No ratings yet'}
                 </div>
             </div>
             <div className={style['title-container']}>
