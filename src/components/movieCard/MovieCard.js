@@ -22,7 +22,7 @@ const MovieCard = (props) => {
                 <img src={`https://image.tmdb.org/t/p/w300/${props.img}`} alt={props.orig_title} />
                 <div className={style['ratings-and-summary']}>
                     <p className={style.summary}>{props.summary}</p>
-                    {props.rating ? <span className={style.rating}>{star} {props.rating}</span>: 'No ratings yet'}
+                    {props.rating ? <span className={style.rating}>{star} {props.rating}</span>: <span className={style['no-ratings']}>No ratings yet</span>}
                 </div>
             </div>
             <div className={style['title-container']}>

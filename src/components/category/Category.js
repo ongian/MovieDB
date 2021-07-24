@@ -1,5 +1,6 @@
 import React from 'react';
 import style from './Category.module.css';
+import Search from '../utilities/Search/Search';
 
 const Category = (props) => {
     return (
@@ -9,9 +10,7 @@ const Category = (props) => {
                 <button onClick={() => props.getCategory('new')}>What's New?</button>
                 <button onClick={() => props.getCategory('trending')}>Trending</button>
             </div>
-            <form>
-                <input type="search" />
-            </form>
+            <Search getQuery={props.getQuery} />
         </div>
     )
 }

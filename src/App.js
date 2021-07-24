@@ -14,13 +14,17 @@ const App = () => {
   const getCategory = (category) => {
     setCategory(category)
   }
+
+  const getQuery = (event) => {
+    console.log(event.target.value)
+  }
   console.log(category)
   return (
     <React.Fragment>
       <Header />
       <Banner />
       <BlockContainer>
-        <Category getCategory={getCategory} />
+        <Category getCategory={getCategory} getQuery={getQuery} />
         {category === 'upcoming' && <UpcomingMovie />}
         {category === 'new' && <NewMovies />}
         {category === 'trending' && <Trending />}
