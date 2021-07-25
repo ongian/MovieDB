@@ -9,7 +9,7 @@ import NewMovies from './components/NewMovies/NewMovies';
 import Trending from './components/Trending/Trending';
 
 const App = () => {
-  const [category, setCategory] = useState('upcoming');
+  const [category, setCategory] = useState('new');
   
   const getCategory = (category) => {
     setCategory(category)
@@ -25,9 +25,9 @@ const App = () => {
       <Banner />
       <BlockContainer>
         <Category getCategory={getCategory} getQuery={getQuery} />
-        {category === 'upcoming' && <UpcomingMovie />}
         {category === 'new' && <NewMovies />}
         {category === 'trending' && <Trending />}
+        {category === 'upcoming' && <UpcomingMovie />}
       </BlockContainer>
     </React.Fragment>
   )

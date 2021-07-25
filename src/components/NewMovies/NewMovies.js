@@ -35,7 +35,7 @@ const NewMovies = (props) => {
     
     return(
         <div className={style['new-movies']}>
-            {loading ? <Loader />: movieDisplay}
+            {loading ? <Loader /> : movieDisplay}
         </div>
     )
 }
