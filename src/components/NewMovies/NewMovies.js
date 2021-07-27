@@ -2,11 +2,14 @@ import React, {useEffect, useState} from 'react';
 import MovieCard from '../movieCard/MovieCard.js';
 import Loader from '../utilities/loader/Loader.js';
 import style from './NewMovies.module.css';
+import Pagination from '../utilities/Pagination/Pagination';
+
 import axios from 'axios';
+import { Fragment } from 'react';
 const NewMovies = (props) => {
     const [movieList, setMovieList] = useState([]);
     const [loading, setLoading] = useState(true)
-
+    
     useEffect(() => {
         const movies = async() => {
             setLoading(true)
@@ -35,7 +38,7 @@ const NewMovies = (props) => {
     
     return(
         <div className={style['new-movies']}>
-            {loading ? <Loader /> : movieDisplay}
+            {loading ? <Loader /> : <Fragment>{movieDisplay} <Pagination pageCount={10} activePage={1} /></Fragment>}
         </div>
     )
 }

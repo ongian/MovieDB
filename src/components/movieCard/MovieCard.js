@@ -27,8 +27,8 @@ const MovieCard = (props) => {
             </div>
             <div className={style['title-container']}>
             <h3>{props.title}</h3>
-                {props.genre.length ? genreDisplay : null}
-                {props.release_date ? <p className={style['release-date']}>Release date: {new Date(props.release_date).toLocaleString('en-US', {month: 'long', day: '2-digit', year: 'numeric'})}</p>: null}
+                {props.release_date && <p className={style['release-date']}>Release date: {new Date(props.release_date).toLocaleString('en-US', {month: 'long', day: '2-digit', year: 'numeric'})}</p>}
+                {props.genre.length && genreDisplay}
             </div>
         </div>
     )

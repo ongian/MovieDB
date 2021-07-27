@@ -1,0 +1,17 @@
+.pagination {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    justify-content: center;
+    margin: 15px 0;
+}
+.page-button {
+    display: block;
+}
+
+.page-button button {
+    border-radius: 3px;
+    padding: 5px 10px;
+    border: 1px solid #ccc;
+    margin: 0 2px;
+}
