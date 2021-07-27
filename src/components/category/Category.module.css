@@ -6,9 +6,12 @@
 }
 .category_button  {
     display: flex;
-    justify-content: space-between;
+    justify-content: initial;
     align-items: center;
     width: 50%;
+}
+.category_button button + button {
+    margin-left: 10px;
 }
 button {
     background: none;

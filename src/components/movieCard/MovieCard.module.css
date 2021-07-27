@@ -3,6 +3,7 @@
 }
 .movie-card h3 {
     font-size: 16px;
+    font-weight: 400;
     line-height: 1.2em;
     margin: 10px 0 2px;
     border-bottom: 1px solid #d8d8d8;
@@ -33,15 +34,26 @@
 }
 .ratings-and-summary p {
     color: #fff;
-    font-size: 14px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 13px;
     line-height: 1.25em;
     margin: 0;
     font-weight: 100;
+    border-bottom: 1px solid #494949;
+    padding: 10px 0;
+    margin-bottom: 5px;
 }
 .ratings-and-summary span {
     font-size: 18px;
     color: #fff;
     font-weight: bold;
+}
+.rating svg {
+    color: #f4ff17;
+}
+.no-ratings {
+    font-size: 14px;
+    font-weight: 100;
 }
 .title-container {
     width: 100%;
@@ -63,6 +75,7 @@
 }
 .genre span {
     font-size: .6rem;
+    margin: 0 3px 0 0;
     line-height: 1rem;
     color: #4e4e4e;
     font-family: system-ui;
@@ -91,6 +104,6 @@
     .movie-card {
         display: block;
         width: 24%;
-        margin: .5%;
+        margin: 1% .5%;
     }
 }

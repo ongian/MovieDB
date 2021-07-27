@@ -1,16 +1,16 @@
 import React, {useEffect, useState} from 'react';
 import MovieCard from '../movieCard/MovieCard.js';
 import Loader from '../utilities/loader/Loader.js';
-import style from './NewMovies.module.css';
+import style from './Trending.module.css';
 import axios from 'axios';
-const NewMovies = (props) => {
+const Trending = (props) => {
     const [movieList, setMovieList] = useState([]);
     const [loading, setLoading] = useState(true)
 
     useEffect(() => {
         const movies = async() => {
             setLoading(true)
-            const results = await axios('https://api.themoviedb.org/3/movie/now_playing?api_key=f785d2cd4e430f2258527567b3468db6&language=en-US&page=1');
+            const results = await axios('https://api.themoviedb.org/3/trending/movie/week?api_key=f785d2cd4e430f2258527567b3468db6');
             setMovieList(results.data.results)
             setLoading(false)
         }
@@ -35,9 +35,9 @@ const NewMovies = (props) => {
     
     return(
         <div className={style['new-movies']}>
-            {loading ? <Loader /> : movieDisplay}
+            {loading ? <Loader />: movieDisplay}
         </div>
     )
 }
 
-export default NewMovies;
+export default Trending;
