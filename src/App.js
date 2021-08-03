@@ -15,10 +15,11 @@ import Category from './components/category/Category';
 
 const App = () => {
   const [category, setCategory] = useState('movie/now_playing');
-  const [movieList, setMovieList] = useState([]);
+  const [movieList, setMovieList] = useState();
   const [loading, setLoading] = useState(true)
     
   useEffect(() => {
+    setLoading(true);
     // const movies = async() => {
     //     setLoading(true)
     //     let results = await axios(`https://api.themoviedb.org/3/${category}?api_key=f785d2cd4e430f2258527567b3468db6&language=en-US&page=1`);
@@ -29,8 +30,13 @@ const App = () => {
     const APILINK = `https://api.themoviedb.org/3/${category}?api_key=f785d2cd4e430f2258527567b3468db6&language=en-US&page=1`;
     axios.get(APILINK)
     .then((data) => {
-      setLoading(true);
-      setMovieList(data.data.results);
+      
+      setMovieList({
+        currentPage: data.data.page,
+        movies: data.data.results,
+        totalPages: data.data.total_pages,
+        totalResults: data.data.total_results
+      });
       setLoading(false)
     })
     .catch(err => {
@@ -40,8 +46,9 @@ const App = () => {
     console.log(APILINK)
   }, [category]);
 
-  
-  const movieDisplay = movieList.filter(relDate => relDate.poster_path !== null)
+  console.log(movieList)
+  const movies = loading ? [] : [...movieList.movies];
+  const movieDisplay = movies.filter(relDate => relDate.poster_path !== null)
     .map((movie, ind) => (
     <MovieCard 
         key={movie.id} 
