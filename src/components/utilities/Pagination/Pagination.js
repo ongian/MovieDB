@@ -15,7 +15,7 @@ const Pagination = (props) => {
             buttons.push(i)
         }
     } else {
-        for(var ii = active_page; ii < 10; ii++){
+        for(var ii = active_page; ii <= 10; ii++){
             buttons.push(ii)
         }
     }

@@ -3,6 +3,7 @@
     width: 100%;
     align-items: center;
     justify-content: space-between;
+    margin: 15px 0;
 }
 .category_button  {
     display: flex;
@@ -10,15 +11,23 @@
     align-items: center;
     width: 50%;
 }
-.category_button button + button {
+.category_button .link + .link {
     margin-left: 10px;
 }
-button {
+.link {
     background: none;
     border: 2px solid #000;
     padding: 10px 25px;
     border-radius: 25px;
     font-size: 16px;
     font-weight: bold;
+    text-decoration: none;
+    color: #000;
+    transition: all .5s ease;
+}
+.link.active, .link:hover {
+    background: #000;
+    text-decoration: none;
+    color: #fff;
     transition: all .5s ease;
 }
