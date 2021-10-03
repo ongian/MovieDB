@@ -9,10 +9,11 @@
     border-bottom: 1px solid #d8d8d8;
     padding: 0 0 5px;
 }
+
 .movie-cover {
     position: relative;
     width: 100%;
-    width: 300px;
+    max-width: 300px;
     height: 450px;
     overflow: hidden;
     margin: auto;

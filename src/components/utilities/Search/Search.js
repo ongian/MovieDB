@@ -1,15 +1,13 @@
-import React, {useState} from 'react';
-
-const Search = () => {
-    const [query, setQuery] = useState('');
+import React from 'react';
+import style from './Search.module.css';
+const Search = (props) => {
 
     const getQuery = (event) => {
-        setQuery(event.target.value)
-        console.log(event.target.value)
+        props.getQuery(event.target.value)
     }
     return (
         <form>
-            <input onChange={getQuery} />
+            <input className={style.search} onChange={getQuery} value={props.queries} placeholder="Search"/>
         </form>
     )
 }

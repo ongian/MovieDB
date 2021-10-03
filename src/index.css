@@ -5,4 +5,20 @@ body {
   font-size: 16px;
   box-sizing: border-box;
 }
-
+.error-container {
+  display: block;
+  width: 100%;
+  padding: 15px;
+  text-align: center;
+}
+p.error {
+  font-size: 5rem;
+  line-height: 5rem;
+  margin: 2rem 0 1rem;
+}
+p.error span {
+  font-size: 1rem;
+}
+.error-container svg {
+  font-size: 5rem;
+}
