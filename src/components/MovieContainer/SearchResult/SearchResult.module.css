@@ -1,0 +1,11 @@
+.result {
+    width: 100%;
+}
+.result p {
+    font-size: 11px;
+    line-height: 10px;
+    margin: 0;
+    padding: 10px 7px 0;
+    font-weight: 100;
+    color: #000000;
+}

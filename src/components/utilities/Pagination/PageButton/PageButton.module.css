@@ -1,0 +1,9 @@
+.active {
+    cursor: pointer;
+    background-color: #000;
+    color: #fff;
+    transition: all .5s ease;
+}
+.page {
+    cursor: pointer;
+}

@@ -2,7 +2,10 @@ import React, {useEffect, useState} from 'react';
 import MovieCard from '../../movieCard/MovieCard';
 import Loader from '../../utilities/loader/Loader';
 import { useLocation, Redirect } from 'react-router';
+import Pagination from '../../utilities/Pagination/Pagination';
 import axios from 'axios';
+import style from './SearchResult.module.css';
+
 // import { useParams } from 'react-router';
 const SearchResult = (props) => {
     const [loading, setLoading] = useState(true);
@@ -17,13 +20,14 @@ const SearchResult = (props) => {
         const movies = async() => {
             setLoading(true)
             const results = await axios(`https://api.themoviedb.org/3/search/movie?api_key=f785d2cd4e430f2258527567b3468db6&language=en-US&query=${searchQuery}&page=${currentPage}`);
-            setMovieList(results.data.results)
+            setMovieList(results.data)
             setLoading(false)
         }
         movies();
     }, [props.search, currentPage, searchQuery]);
 
-    const movieDisplay = movieList.filter(relDate => relDate.poster_path !== null)
+    const moviesArr = movieList.results === undefined ? [] : movieList.results;
+    const movieDisplay = moviesArr.filter(relDate => relDate.poster_path !== null)
     .map((movie, ind) => (
     <MovieCard 
         key={movie.id} 
@@ -36,10 +40,24 @@ const SearchResult = (props) => {
         summary={movie.overview}
     />));
 
+    const moviesFound = movieList.total_results;
+    let moviesResult = <p>No Movies Found</p>;
+    if(moviesFound === 1){
+        moviesResult = <p>1 Result Found</p>
+    }
+    if(moviesFound > 1){
+        moviesResult = <p>{moviesFound} Results Found</p>
+    }
+
+    console.log(movieList)
+    // const getCurrentPage = (page) => {
+    //     setCurrentPage(page)
+    // }
     return (
         <React.Fragment>
-            {loading ? <Loader /> : movieDisplay}
             {searchQuery === '' && <Redirect to="/" />}
+            <div className={style.result}>{moviesResult} </div>
+            {loading ? <Loader /> : <React.Fragment>{movieDisplay} {movieList.total_pages > 1 && <Pagination pageCount={movieList.total_pages} activePage={movieList.page} />}</React.Fragment>}
         </React.Fragment>
         
     )

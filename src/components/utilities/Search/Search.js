@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import style from './Search.module.css';
 import { useHistory, useLocation } from 'react-router';
+
 const Search = (props) => {
     const history = useHistory();
     const location = useLocation();
@@ -28,6 +29,7 @@ const Search = (props) => {
     const searchForm = (event) => {
         event.preventDefault();
     }
+    
     return (
         <form onSubmit={searchForm}>
             <input 

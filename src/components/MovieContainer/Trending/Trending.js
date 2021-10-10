@@ -3,20 +3,23 @@ import MovieCard from '../../movieCard/MovieCard';
 import Loader from '../../utilities/loader/Loader.js';
 import style from './Trending.module.css';
 import axios from 'axios';
+import { useLocation } from 'react-router';
 import Pagination from '../../utilities/Pagination/Pagination';
 const Trending = (props) => {
     const [movieList, setMovieList] = useState([]);
     const [loading, setLoading] = useState(true)
-
+    const loc = useLocation();
+    const pageParam = new URLSearchParams(loc.search);
+    const curPageParam = pageParam.get('page') ? pageParam.get('page') : 1;
     useEffect(() => {
         const movies = async() => {
             setLoading(true)
-            const results = await axios('https://api.themoviedb.org/3/trending/movie/week?api_key=f785d2cd4e430f2258527567b3468db6');
+            const results = await axios(`https://api.themoviedb.org/3/trending/movie/week?api_key=f785d2cd4e430f2258527567b3468db6&page=${curPageParam}`);
             setMovieList(results.data)
             setLoading(false)
         }
         movies();
-    }, []);
+    }, [curPageParam]);
     
     const moviesArr = movieList.results === undefined ? [] : movieList.results;
     const movieDisplay = moviesArr.filter(relDate => relDate.poster_path !== null)
@@ -40,11 +43,13 @@ const Trending = (props) => {
     if(moviesFound > 1){
         moviesResult = <p>{moviesFound} Results Found</p>
     }
-
+    // const getCurrentPage = (page) => {
+    //     setCurrentPage(page)
+    // }
     return(
         <div className={style['new-movies']}>
             <div className={style.result}>{moviesResult} </div>
-            {loading ? <Loader /> : <React.Fragment>{movieDisplay} <Pagination pageCount={10} activePage={1} /></React.Fragment>}
+            {loading ? <Loader /> : <React.Fragment>{movieDisplay} {movieList.total_pages > 1 && <Pagination pageCount={movieList.total_pages} activePage={movieList.page} />}</React.Fragment>}
         </div>
     )
 }
