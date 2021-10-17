@@ -1,7 +1,7 @@
 import React from 'react';
 import PageButton from './PageButton/PageButton';
 import style from './Pagination.module.css';
-
+import { useLocation, useHistory } from 'react-router';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronCircleLeft, faChevronCircleRight } from '@fortawesome/free-solid-svg-icons';
 
@@ -10,6 +10,10 @@ const Pagination = (props) => {
     const active_page = props.activePage;
     let buttons = [];
 
+    const history = useHistory();
+    const loc = useLocation();
+    const params = new URLSearchParams(loc.search);
+    const activeSearch = params.get('query');
 
     console.log('Page Count ', props.pageCount)
     if(num_of_page >= 10){
@@ -38,6 +42,10 @@ const Pagination = (props) => {
             }
             console.log('c')
         }
+    } else {
+        for(var i = 1; i <= num_of_page; i++){
+            buttons.push(i)
+        }
     }
     const displayButtons = buttons.map(btn => <PageButton getCurrentPage={props.getCurrentPage} active={active_page} key={btn}>{btn}</PageButton>);
     let firstPageButton;
@@ -49,16 +57,33 @@ const Pagination = (props) => {
     if(active_page > 10 && num_of_page > 11){
         firstPageButton = <React.Fragment><PageButton getCurrentPage={props.getCurrentPage} key={1}>1</PageButton> ... </React.Fragment>
     }
-    console.log(num_of_page)
+
+    const prevPageHandler = () => {
+        if(activeSearch){
+            history.push(`/search?query=${activeSearch}&page=${active_page - 1}`)
+        } else {
+            history.push(`${history.location.pathname}?page=${active_page - 1}`)
+        }
+    }
+    const nextPageHandler = () => {
+        if(activeSearch){
+            history.push(`/search?query=${activeSearch}&page=${active_page + 1}`)
+        } else {
+            history.push(`${history.location.pathname}?page=${active_page + 1}`)
+        }
+    }
+    const prevButton = <span className="prev" onClick={prevPageHandler}><FontAwesomeIcon icon={faChevronCircleLeft} /> Previous </span>;
+    const nextButton = <span className="next" onClick={nextPageHandler}>Next <FontAwesomeIcon icon={faChevronCircleRight} /> </span>;
+    
     return (
         <div className={style.pagination}>
-            <span className="prev"><FontAwesomeIcon icon={faChevronCircleLeft} /> Previous </span>
+            {active_page > 1 && prevButton}
             <div className={style['page-button']}>
                 {firstPageButton}
                 {displayButtons}
                 {lastPageButton}
             </div>
-            <span className="next">Next <FontAwesomeIcon icon={faChevronCircleRight} /> </span>
+            {num_of_page > 1 && nextButton}
         </div>
     )
 }

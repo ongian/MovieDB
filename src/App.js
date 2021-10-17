@@ -1,6 +1,5 @@
 import React, {useState} from 'react';
 import './index.css';
-import Header from './components/header/Header';
 import BlockContainer from './components/utilities/blockContainer/BlockContainer';
 import Banner from './components/banner/Banner';
 import Category from './components/category/Category';
@@ -17,7 +16,6 @@ const App = () => {
   console.log(search)
   return (
     <React.Fragment>
-      <Header />
       <Banner />
       <BlockContainer>
         <Category getSearch={getSearch}/>

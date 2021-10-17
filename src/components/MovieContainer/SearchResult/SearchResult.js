@@ -10,25 +10,31 @@ import style from './SearchResult.module.css';
 const SearchResult = (props) => {
     const [loading, setLoading] = useState(true);
     const [movieList, setMovieList] = useState([]);
-    const [currentPage, setCurrentPage] = useState(1);
+    //const [currentPage, setCurrentPage] = useState(1);
     const loc = useLocation();
 
     const searchParam = new URLSearchParams(loc.search);
     const searchQuery = searchParam.get('query');
-
+    const searchPage = searchParam.get('page') ? `&page=${searchParam.get('page')}` : '';
     useEffect(() => {
         const movies = async() => {
-            setLoading(true)
-            const results = await axios(`https://api.themoviedb.org/3/search/movie?api_key=f785d2cd4e430f2258527567b3468db6&language=en-US&query=${searchQuery}&page=${currentPage}`);
-            setMovieList(results.data)
-            setLoading(false)
+            setLoading(true);
+            try {
+                const results = await axios(`https://api.themoviedb.org/3/search/movie?api_key=f785d2cd4e430f2258527567b3468db6&language=en-US&query=${searchQuery}${searchPage}`);
+                setMovieList(results.data)
+                setLoading(false)
+            } catch (error) {
+                console.log(error)
+                setLoading(false)
+            }
         }
         movies();
-    }, [props.search, currentPage, searchQuery]);
+        const bannerHeight = document.querySelector('.container').offsetTop;
+        setTimeout(window.scrollTo({top: bannerHeight, left: 0, behavior: 'smooth' }), 1000)
+    }, [searchQuery, searchPage]);
 
     const moviesArr = movieList.results === undefined ? [] : movieList.results;
-    const movieDisplay = moviesArr.filter(relDate => relDate.poster_path !== null)
-    .map((movie, ind) => (
+    const movieDisplay = moviesArr.map((movie, ind) => (
     <MovieCard 
         key={movie.id} 
         img={movie.poster_path} 
@@ -49,7 +55,6 @@ const SearchResult = (props) => {
         moviesResult = <p>{moviesFound} Results Found</p>
     }
 
-    console.log(movieList)
     // const getCurrentPage = (page) => {
     //     setCurrentPage(page)
     // }

@@ -19,6 +19,8 @@ const Trending = (props) => {
             setLoading(false)
         }
         movies();
+        const bannerHeight = document.querySelector('.container').offsetTop;
+        setTimeout(window.scrollTo({top: bannerHeight, left: 0, behavior: 'smooth' }), 1000)
     }, [curPageParam]);
     
     const moviesArr = movieList.results === undefined ? [] : movieList.results;

@@ -12,20 +12,28 @@ const NewMovies = (props) => {
     const loc = useLocation();
     const pageParam = new URLSearchParams(loc.search);
     const curPageParam = pageParam.get('page') ? pageParam.get('page') : 1;
+    
     useEffect(() => {
         const movies = async() => {
             setLoading(true)
-            const results = await axios(`https://api.themoviedb.org/3/movie/now_playing?api_key=f785d2cd4e430f2258527567b3468db6&language=en-US&page=${curPageParam}`);
-            setMovieList(results.data)
-            setLoading(false)
+            try {
+                const results = await axios(`https://api.themoviedb.org/3/movie/now_playing?api_key=f785d2cd4e430f2258527567b3468db6&language=en-US&page=${curPageParam}`);
+                setMovieList(results.data)
+                setLoading(false)
+                
+            } catch (error) {
+                console.log(error)
+                setLoading(false)
+            }
         }
         movies();
+        const bannerHeight = document.querySelector('.container').offsetTop;
+        setTimeout(window.scrollTo({top: bannerHeight, left: 0, behavior: 'smooth' }), 1000)
     }, [curPageParam]);
     console.log('New Movie')
     
     const moviesArr = movieList.results === undefined ? [] : movieList.results;
-    const movieDisplay = moviesArr.filter(relDate => relDate.poster_path !== null)
-    .map((movie, ind) => (
+    const movieDisplay = moviesArr.map((movie, ind) => (
     <MovieCard 
         key={movie.id} 
         img={movie.poster_path} 
@@ -45,9 +53,6 @@ const NewMovies = (props) => {
     if(moviesFound > 1){
         moviesResult = <p>{moviesFound} Results Found</p>
     }
-    // const getCurrentPage = (curPageParam) => {
-    //     setCurrentPage(curPageParam)
-    // }
 
     return(
         <div className={style['new-movies']}>

@@ -3,7 +3,7 @@ import style from './MovieCard.module.css';
 import { MovieContext } from '../../Context/MovieContext';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar } from '@fortawesome/free-solid-svg-icons';
-
+import nullImage from '../../images/image-not-found.png';
 const MovieCard = (props) => {
     const ctxGenre = useContext(MovieContext);
 
@@ -19,7 +19,7 @@ const MovieCard = (props) => {
     return (
         <div className={style['movie-card']}>
             <div className={style['movie-cover']}>
-                <img src={`https://image.tmdb.org/t/p/w300/${props.img}`} alt={props.orig_title} />
+                <img src={props.img === null ? nullImage : `https://image.tmdb.org/t/p/w300/${props.img}`} alt={props.orig_title} />
                 <div className={style['ratings-and-summary']}>
                     <p className={style.summary}>{props.summary}</p>
                     {props.rating ? <span className={style.rating}>{star} {props.rating}</span>: <span className={style['no-ratings']}>No ratings yet</span>}

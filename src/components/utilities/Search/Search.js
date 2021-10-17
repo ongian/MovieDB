@@ -8,8 +8,14 @@ const Search = (props) => {
     const searchParams = new URLSearchParams(location.search);
     const searchQuery = searchParams.get('query') ? searchParams.get('query') : '';
     const [prevPage, setPrevPage] = useState('/');
+    // const [typedQueries, setTypeQueries] = useState('');
+    // const [asyncQuery, setAsyncQuery] = useState('');
+    // useEffect(() => {
+    //     const searchURL = setTimeout(() => setAsyncQuery(typedQueries), 2000);
+    //     return () => clearTimeout(searchURL);
+    // }, [typedQueries])
     const getQuery = (event) => {
-        history.replace(`/search?query=${event.target.value}`)
+        history.replace(`/search?query=${event.target.value}`);
         event.preventDefault();
         if(event.target.value === ''){
             history.replace(prevPage)
@@ -19,7 +25,6 @@ const Search = (props) => {
         if(event.target.value === '' && location.search === ''){
             setPrevPage(location.pathname)
         }
-        console.log(location)
     }
     const emptyInputBlurHandler = (event) => {
         if(event.target.value === ''){
