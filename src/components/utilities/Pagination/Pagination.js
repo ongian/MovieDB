@@ -15,7 +15,6 @@ const Pagination = (props) => {
     const params = new URLSearchParams(loc.search);
     const activeSearch = params.get('query');
 
-    console.log('Page Count ', props.pageCount)
     if(num_of_page >= 10){
         if(active_page <= (num_of_page - 9)){
             if(active_page >= 5){
@@ -65,16 +64,20 @@ const Pagination = (props) => {
             history.push(`${history.location.pathname}?page=${active_page - 1}`)
         }
     }
-    const nextPageHandler = () => {
+    const nextPageHandler = (e) => {
         if(activeSearch){
-            history.push(`/search?query=${activeSearch}&page=${active_page + 1}`)
+            if(active_page < num_of_page){
+                history.push(`/search?query=${activeSearch}&page=${active_page + 1}`)
+            } else {
+                e.preventDefault()
+            }
         } else {
             history.push(`${history.location.pathname}?page=${active_page + 1}`)
         }
     }
     const prevButton = <span className="prev" onClick={prevPageHandler}><FontAwesomeIcon icon={faChevronCircleLeft} /> Previous </span>;
     const nextButton = <span className="next" onClick={nextPageHandler}>Next <FontAwesomeIcon icon={faChevronCircleRight} /> </span>;
-    
+
     return (
         <div className={style.pagination}>
             {active_page > 1 && prevButton}
@@ -83,7 +86,7 @@ const Pagination = (props) => {
                 {displayButtons}
                 {lastPageButton}
             </div>
-            {num_of_page > 1 && nextButton}
+            {num_of_page > 1  && active_page < num_of_page ? nextButton : null}
         </div>
     )
 }

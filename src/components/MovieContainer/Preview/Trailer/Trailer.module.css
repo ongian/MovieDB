@@ -1,0 +1,29 @@
+.trailer-section {
+    display: block;
+    width: 100%;
+    border-top: 1px solid #afafaf;
+    margin: 25px 0;
+    padding: 10px;
+    box-sizing: border-box;
+}
+.trailer-section h2 {
+    font-size: 18px;
+    line-height: 1em;
+    margin: 10px 0 20px;
+}
+.trailer-carousel {
+    display: flex;
+    position: relative;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+.trailer {
+    width: 120px;
+    margin: 0 5px;
+}
+.trailer p {
+    font-size: 12px;
+    line-height: 1em;
+    margin: 0;
+    font-weight: initial;
+}

@@ -1,0 +1,19 @@
+.movie-poster {
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+}
+.movie-poster img {
+    max-width: 500px;
+    width: 100%;
+    margin: auto;
+    display: block;
+}
+@media(min-width: 767px){
+    .movie-poster {
+        -webkit-box-flex: 0;
+        -ms-flex: 0 0 50%;
+        flex: 0 0 50%;
+        max-width: 50%;
+    }
+}

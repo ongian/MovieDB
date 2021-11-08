@@ -1,0 +1,74 @@
+.movie-details {
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+}
+.movie-details h1 {
+    font-size: 36px;
+    line-height: 1em;
+    margin: 0;
+    padding: 0;
+}
+.movie-details p.genre {
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 1em;
+    margin: 10px 0 0;
+    padding: 0;
+    color: #4c4c4c;
+}
+.ratings {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 100%;
+    overflow: hidden;
+    background: #2980b9;
+    color: #000000;
+    width: 50px;
+    height: 50px;
+    font-size: calc(50px / 3);
+    line-height: 1;
+}
+
+.ratings span {
+    position: relative;
+    display: flex;
+    font-weight: bold;
+    z-index: 2;
+}
+/* Bar mask, creates an inner circle with the same color as thee background */
+.ratings::after {
+    content: "";
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    bottom: 5px;
+    left: 5px;
+    background: #ffffff;
+    border-radius: inherit;
+    z-index: 1;
+}
+  
+/* Bar background */
+.ratings::before {
+    content: "";
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    bottom: 5px;
+    left: 5px;
+    border-radius: inherit;
+    box-shadow: 0 0 0 1rem var(--rating-color-background);
+    z-index: -1;
+}
+@media(min-width: 767px){
+    .movie-details {
+        -webkit-box-flex: 0;
+        -ms-flex: 0 0 50%;
+        flex: 0 0 50%;
+        max-width: 50%;
+    }
+}
+

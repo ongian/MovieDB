@@ -36,7 +36,8 @@ const SearchResult = (props) => {
     const moviesArr = movieList.results === undefined ? [] : movieList.results;
     const movieDisplay = moviesArr.map((movie, ind) => (
     <MovieCard 
-        key={movie.id} 
+        key={movie.id}
+        movieID={movie.id} 
         img={movie.poster_path} 
         orig_title={movie.original_title}
         title={movie.title}

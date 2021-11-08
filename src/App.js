@@ -7,18 +7,25 @@ import {Switch, Route} from 'react-router-dom';
 import NewMovies from './components/MovieContainer/NewMovies/NewMovies';
 import Trending from './components/MovieContainer/Trending/Trending';
 import SearchResult from './components/MovieContainer/SearchResult/SearchResult';
+import Preview from './components/MovieContainer/Preview/Preview';
 import PageNotFound from './components/utilities/PageNotFound/PageNotFound';
 const App = () => {
-  const [search, setSearch] = useState('')
+  const [search, setSearch] = useState('');
   const getSearch = (query) => {
     setSearch(query)
   }
-  console.log(search)
+
+ 
   return (
     <React.Fragment>
-      <Banner />
+      <Route path={['/trending', '/search', '/']} exact={true}>
+        <Banner />
+      </Route>
       <BlockContainer>
-        <Category getSearch={getSearch}/>
+        <Route path={['/trending', '/search', '/']} exact={true}>
+          <Category getSearch={getSearch}/>
+        </Route>
+        
         <Switch>
           <Route path="/trending">
             <Trending />
@@ -28,6 +35,9 @@ const App = () => {
           </Route>
           <Route exact={true} path="/">
             <NewMovies />
+          </Route>
+          <Route exact={true} path="/movie/:movieId">
+            <Preview />
           </Route>
           <Route path="/*">
             <PageNotFound />

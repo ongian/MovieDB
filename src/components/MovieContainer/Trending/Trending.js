@@ -27,7 +27,8 @@ const Trending = (props) => {
     const movieDisplay = moviesArr.filter(relDate => relDate.poster_path !== null)
     .map((movie, ind) => (
     <MovieCard 
-        key={movie.id} 
+        key={movie.id}
+        movieID={movie.id} 
         img={movie.poster_path} 
         orig_title={movie.original_title}
         title={movie.title}

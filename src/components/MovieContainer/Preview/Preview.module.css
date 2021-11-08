@@ -1,0 +1,9 @@
+.hero-banner {
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    display: -webkit-box!important;
+    display: -ms-flexbox!important;
+    width: 100%;
+    flex-wrap: wrap;
+}
