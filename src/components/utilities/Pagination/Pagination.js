@@ -75,8 +75,8 @@ const Pagination = (props) => {
             history.push(`${history.location.pathname}?page=${active_page + 1}`)
         }
     }
-    const prevButton = <span className="prev" onClick={prevPageHandler}><FontAwesomeIcon icon={faChevronCircleLeft} /> Previous </span>;
-    const nextButton = <span className="next" onClick={nextPageHandler}>Next <FontAwesomeIcon icon={faChevronCircleRight} /> </span>;
+    const prevButton = <span className={style.prev} onClick={prevPageHandler}><FontAwesomeIcon icon={faChevronCircleLeft} /> Previous </span>;
+    const nextButton = <span className={style.next} onClick={nextPageHandler}>Next <FontAwesomeIcon icon={faChevronCircleRight} /> </span>;
 
     return (
         <div className={style.pagination}>

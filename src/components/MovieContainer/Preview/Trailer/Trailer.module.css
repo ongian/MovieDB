@@ -5,6 +5,14 @@
     margin: 25px 0;
     padding: 10px;
     box-sizing: border-box;
+    position: relative;
+    min-height: 210px;
+}
+.carousel-container {
+    overflow: hidden;
+    display: block;
+    width: 100%;
+    position: relative;
 }
 .trailer-section h2 {
     font-size: 18px;
@@ -13,9 +21,7 @@
 }
 .trailer-carousel {
     display: flex;
-    position: relative;
     box-sizing: border-box;
-    overflow: hidden;
 }
 .trailer {
     width: 120px;
@@ -26,4 +32,8 @@
     line-height: 1em;
     margin: 0;
     font-weight: initial;
+}
+.trailer-arrow {
+    font-size: 45px;
+    margin: 20px 0 0;
 }
