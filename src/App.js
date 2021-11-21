@@ -21,29 +21,35 @@ const App = () => {
       <Route path={['/trending', '/search', '/']} exact={true}>
         <Banner />
       </Route>
-      <BlockContainer>
-        <Route path={['/trending', '/search', '/']} exact={true}>
-          <Category getSearch={getSearch}/>
-        </Route>
-        
+      <Route path={['/trending', '/search', '/']} exact={true}>
+        <Category getSearch={getSearch}/>
+      </Route>
         <Switch>
           <Route path="/trending">
-            <Trending />
+            <BlockContainer>
+              <Trending />
+            </BlockContainer>
           </Route>
           <Route path="/search">
-            <SearchResult />
+            <BlockContainer>
+              <SearchResult />
+            </BlockContainer>
           </Route>
           <Route exact={true} path="/">
-            <NewMovies />
+            <BlockContainer>
+              <NewMovies />
+            </BlockContainer>
           </Route>
           <Route exact={true} path="/movie/:movieId">
             <Preview />
           </Route>
           <Route path="/*">
-            <PageNotFound />
+            <BlockContainer>
+              <PageNotFound />
+            </BlockContainer>
           </Route>
         </Switch>
-      </BlockContainer>
+      
     </React.Fragment>
   )
   

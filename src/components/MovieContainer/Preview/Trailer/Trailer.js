@@ -11,12 +11,11 @@ const Trailer = (props) => {
     const params = useParams();
     const [trailers, setTrailers] = useState([]);
     const [trailerVideo, setTrailerVideo] = useState('');
-
     useEffect(() => {
         const getTrailers = async() => {
             try {
-                const videos = await axios(`https://api.themoviedb.org/3/movie/${params.movieId}/videos?api_key=f785d2cd4e430f2258527567b3468db6`)
-                setTrailers(videos.data)
+                const videos = await axios(`https://api.themoviedb.org/3/movie/${params.movieId}/videos?api_key=f785d2cd4e430f2258527567b3468db6`);
+                setTrailers(videos.data);
             } catch(err) {
                 console.log(err)
             }
@@ -24,7 +23,6 @@ const Trailer = (props) => {
         getTrailers();
     }, [params]);
 
-    console.log(trailers.results);
     
     const trailersArr = trailers.results ? trailers.results : [];
     const prevButton = <FontAwesomeIcon icon={faChevronLeft} className={style['trailer-arrow']} />;
@@ -54,6 +52,7 @@ const Trailer = (props) => {
                                 </div>
                             </div>;
     const videoURL = `https://www.youtube.com/embed/${trailerVideo}`;
+
     return (<>
         {trailersArr.length ? trailersCarousel : <p>No Videos Available</p>}
         {trailerVideo ? <TrailerModal closeTrailer={clearTrailerVideo}>

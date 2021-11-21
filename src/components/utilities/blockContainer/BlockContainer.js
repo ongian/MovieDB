@@ -1,6 +1,8 @@
 import React from 'react';
 import './BlockContainer.css';
 
-const BlockContainer = (props) => <div className="container">{props.children}</div>
+const BlockContainer = React.forwardRef((props, ref) => {
+    return <div ref={ref} className={props.className ? props.className + ' container' : 'container'}>{props.children}</div>
+})
 
 export default BlockContainer;

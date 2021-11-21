@@ -7,3 +7,30 @@
     width: 100%;
     flex-wrap: wrap;
 }
+.container {
+    width: 100%!important;
+}
+.with-backdrop {
+    position: relative;
+}
+
+.with-backdrop h1, .with-backdrop p, .with-backdrop p span, .with-backdrop h2 {
+    color: #fff;
+}
+.with-backdrop .trailer-arrow {
+    color: #fff;
+}
+.with-backdrop .container {
+    position: absolute;
+    top: 50px;
+    padding: 0 15px;
+    box-sizing: border-box;
+    left: 0;
+    right: 0;
+}
+@media(min-width: 767px){
+    .with-backdrop .container {
+        position: absolute;
+        top: 125px;
+    }
+}
