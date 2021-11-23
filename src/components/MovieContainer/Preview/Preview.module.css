@@ -22,11 +22,27 @@
 }
 .with-backdrop .container {
     position: absolute;
-    top: 50px;
+    top: 100px;
     padding: 0 15px;
     box-sizing: border-box;
     left: 0;
     right: 0;
+}
+.trailer-nav {
+    align-items: center;
+    justify-content: space-around;
+    width: 100%;
+    max-width: 1075px;
+    margin: auto;
+    margin-top: 15px;
+}
+.trailer-nav svg, .trailer-nav a {
+    color: #fff;
+    font-size: 45px;
+    z-index: 1;
+}
+.trailer-nav svg:hover, .trailer-nav a:hover {
+    color: #2b869b;
 }
 @media(min-width: 767px){
     .with-backdrop .container {

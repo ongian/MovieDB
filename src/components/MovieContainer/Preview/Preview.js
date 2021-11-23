@@ -7,7 +7,7 @@ import {useParams} from 'react-router-dom';
 import style from './Preview.module.css';
 import Trailer from './Trailer/Trailer';
 import MovieBG from './MovieBG/MovieBG';
-//import {useContainerDimensions} from '../../../hooks/useContainerDimensions';
+import TrailerNav from '../../utilities/TrailerNav/TrailerNav';
 
 const Preview = (props) => {
     const params = useParams();
@@ -45,6 +45,9 @@ const Preview = (props) => {
         <React.Fragment>
         <div className={`${style['hero-banner']} ${movieBG.length ? style['with-backdrop']: ''}`} >
             {movieBackground}
+            <BlockContainer className={style['trailer-nav']}>
+                <TrailerNav />
+            </BlockContainer>
             <BlockContainer className={style.container}>
                 <Poster poster={movieDetails.backdrop_path} title={movieDetails.title} />
                 <MovieDetails 

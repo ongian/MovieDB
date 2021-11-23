@@ -6,6 +6,7 @@
     min-height: 450px;
     display: flex;
     align-items: center;
+    padding: 15px;
 }
 .container {
     max-width: 1200px;

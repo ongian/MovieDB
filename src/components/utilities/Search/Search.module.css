@@ -10,4 +10,6 @@
     background-repeat: no-repeat;
     background-position: 90%, 0;
     background-size: 25px;
+    width: 100%;
+    box-sizing: border-box;
 }
