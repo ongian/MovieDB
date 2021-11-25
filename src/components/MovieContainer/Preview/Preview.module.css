@@ -30,16 +30,19 @@
 }
 .trailer-nav {
     align-items: center;
-    justify-content: space-around;
+    justify-content: space-between;
     width: 100%;
     max-width: 1075px;
     margin: auto;
     margin-top: 15px;
 }
 .trailer-nav svg, .trailer-nav a {
-    color: #fff;
+    color: #000;
     font-size: 45px;
     z-index: 1;
+}
+.with-backdrop .trailer-nav svg, .with-backdrop .trailer-nav a {
+    color: #fff;
 }
 .trailer-nav svg:hover, .trailer-nav a:hover {
     color: #2b869b;
@@ -48,5 +51,8 @@
     .with-backdrop .container {
         position: absolute;
         top: 125px;
+    }
+    .trailer-nav {
+        justify-content: space-around;
     }
 }

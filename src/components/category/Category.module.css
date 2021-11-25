@@ -38,8 +38,11 @@
 }
 
 @media(min-width: 767px){
-    .category_button, .category form {
-        width: 50%;
+    .category_button {
+        width: 75%;
+    }
+    .category form {
+        width: 25%;
     }
     .category_button {
         justify-content: flex-start;

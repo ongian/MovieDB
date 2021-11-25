@@ -2,9 +2,7 @@ import React, {useEffect, useState} from 'react';
 import { useParams } from 'react-router';
 import axios from 'axios';
 import style from './Trailer.module.css';
-import { Carousel } from '@trendyol-js/react-carousel';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons';
+import { ScrollingCarousel } from '@trendyol-js/react-carousel';
 import TrailerModal from '../../../utilities/TrailerModal/TrailerModal';
 
 const Trailer = (props) => {
@@ -25,8 +23,6 @@ const Trailer = (props) => {
 
     
     const trailersArr = trailers.results ? trailers.results : [];
-    const prevButton = <FontAwesomeIcon icon={faChevronLeft} className={style['trailer-arrow']} />;
-    const nextButton = <FontAwesomeIcon icon={faChevronRight} className={style['trailer-arrow']} />;
 
     const setTrailerVid = (videoId) => {
         setTrailerVideo(videoId);
@@ -42,19 +38,17 @@ const Trailer = (props) => {
     const trailersCarousel = <div className={style['trailer-section']}>
                                 <div className={style['carousel-container']}>
                                     <h2>Videos</h2>
-                                    <Carousel 
+                                    <ScrollingCarousel 
                                         show={8} 
-                                        infinite={false}
-                                        rightArrow={nextButton}
-                                        leftArrow={prevButton}>
+                                        infinite={false}>
                                         {thumbnailCarousel}
-                                    </Carousel>
+                                    </ScrollingCarousel>
                                 </div>
                             </div>;
     const videoURL = `https://www.youtube.com/embed/${trailerVideo}`;
 
     return (<>
-        {trailersArr.length ? trailersCarousel : <p>No Videos Available</p>}
+        {trailersArr.length ? trailersCarousel : null}
         {trailerVideo ? <TrailerModal closeTrailer={clearTrailerVideo}>
             <div className={style['video-container']}>
                 <iframe 
